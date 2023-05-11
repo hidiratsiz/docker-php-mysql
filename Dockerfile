@@ -1,8 +1,14 @@
-# PHP ile Apache sunucusu kullanın
-FROM php:7.4-apache
-
-# MySQLi eklentisini yükleyin
-RUN docker-php-ext-install mysqli
-
-# Uygulama kodunu Apache web dizinine kopyalayın
-COPY src/ /var/www/html/
+FROM php:7.3-apache
+#Install git
+RUN apt-get update \
+    && apt-get install -y git
+RUN docker-php-ext-install pdo pdo_mysql mysqli
+RUN a2enmod rewrite
+#Install Composer
+##RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+#RUN php composer-setup.php --install-dir=. --filename=composer
+#RUN mv composer /usr/local/bin/
+#RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+#RUN service apache2 restart
+#COPY src/ /var/www/html/
+#EXPOSE 80

@@ -1,5 +1,5 @@
 <?php
-$server_name= "db";
+$server_name= "database";
 $user_name= "db_user";
 $password= ".mypwd.";
 $database_name= "proje1";
